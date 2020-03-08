@@ -19,11 +19,15 @@ app.get('/help',(req,res) =>{
 
 
 app.get('/about',(req,res)=> {
-    res.send('about page here we go')
+    res.send('<h1>about page here we go</h1>')
 })
 
 app.get('/weatherapp',(req,res) =>{
-    res.send('This is the weather app')
+    res.send({
+        forcast: 50,
+        city: 'Dublin'
+
+    })
 })
 
 
