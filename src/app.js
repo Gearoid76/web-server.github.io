@@ -6,6 +6,19 @@ app.get('',(req,res)=>{
     res.send('Hello express')
 })
 
+app.get('/help', (req, res) =>{
+    res.send('help page')
+})
+
+app.get('/about',(req,res)=> {
+    res.send('about page here we go')
+})
+
+app.get('/weatherapp',(req,res) =>{
+    res.send('This is the weather app')
+})
+
+
 //app.com
 //app.com/help
 //app.com/about
