@@ -6,15 +6,17 @@ app.get('',(req,res)=>{
     res.send('<h1> Hello hello </h1>') //html
 })
 
-app.get('/help', (req, res) =>{
+app.get('/help',(req,res) =>{
     res.send([{
         name: 'Andrew',
-        age: 36
+        age: 35
     },{
-        name: 'Sarah',
-        age: 22
-    }
-])
+        name: 'sahra',
+        age: 3
+    }])
+})
+
+
 
 app.get('/about',(req,res)=> {
     res.send('about page here we go')
