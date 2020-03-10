@@ -3,8 +3,6 @@ const express = require('express')
 
 console.log(__dirname)
 console.log(path.join(__dirname,'../public'))
-console.log(path.join(__dirname,'../public/about.html'))
-console.log(path.join(__dirname,'../public/help.html'))
 
 const app= express()
 const publicDirectoryPath = path.join(__dirname,'../public')
