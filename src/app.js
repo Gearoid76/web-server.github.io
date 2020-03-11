@@ -2,11 +2,16 @@ const path = require('path')
 const express = require('express')
 
 const app = express()
+
+//before path for express config
 const publicDirectoryPath = path.join(__dirname, '../publc')
 const viewsPath = path.join(__dirname, '../templates')
 
+//Setup handlebars enging and views location
 app.set ('view engine','hbs')
 app.set('views',viewsPath)
+
+//Setup static directiory to serve
 app.use(express.static(publicDirectoryPath))
 
 app.get('', (req,res) => {  // using render for hbs  as apposed to send for ht
