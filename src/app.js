@@ -1,8 +1,14 @@
 const path = require('path')
 const express = require('express')
 
+app.set ('view engine','hbs')
 console.log(__dirname)
 console.log(path.join(__dirname,'../public'))
+
+app.get('', (req, res)=> {
+    res.render('index')
+    )}
+    
 
 const app= express()
 const publicDirectoryPath = path.join(__dirname,'../public')
