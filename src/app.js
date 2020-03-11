@@ -9,21 +9,24 @@ app.use(express.static(publicDirectoryPath))
 
 app.get('', (req,res) => {  // using render for hbs  as apposed to send for ht
     res.render('index', { 
-        title: 'Weather App',
+        title: 'Weather',
         name: 'Carlos'
     })
 })
 
+app.get('/about', (req,res) => {
+    res.render('about', {
+    title: 'About',
+    name: 'Gigliii'
+    })
+})
+
 app.get('/help',(req,res)=> {
-    res.send([{
-        name:'harry',
-        age: 23
-    },
-    {
-        name:'Harry',
-        age: 44
-        
-    }])
+    res.render('help', {
+        title: 'Help',
+        name:'Hero2',
+        message:'This is the help message according to Horrible'
+    })
 })
 
 app.get('/weather', (req, res) => {
