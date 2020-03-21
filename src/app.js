@@ -45,9 +45,11 @@ app.get('/weather', (req, res) => {
             error: 'You must provide an address'
         })
     }
-    console.log(req.query.search)
+    console.log(req.query.address)
     res.send({
-            City:[]
+            Location: 'Cork',
+            forcast:'Cloudy',
+            Address: req.query.address
     })
 })
 
