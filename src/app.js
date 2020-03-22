@@ -3,7 +3,7 @@ const express = require('express')
 const hbs = require('hbs')
 
 const geocode = require('./utils/geocode')
-const forcast = require('./utils/forecast')
+const forecast = require('./utils/forecast')
 
 
 const app = express()
@@ -53,24 +53,20 @@ app.get('/weather', (req, res) => {
             geocode(req.query.address, (error, {latitude, longitude, location}) => {
                 if (error) {
                     return res.send({ error }) // just got rid of the '' and text
-         }
-            forcast(req.query.latitude, req.querylongitude, (error, forcastData) => {
-                    if (!req.forcast) {
-                        return res.send({ 
-                            error :'You are missing infromation'
-                        })
+                }
+            forecast(latitude, longitude, (error, forecastData) => { //error had req.query infront of lat and long
+                    if (error) {
+                        return res.send({  error  })
                     } 
-                })
-            })
+            
      
-             
-   
-
     console.log(req.query.address)
     res.send({
-            Location: req.query.longitude, //error here.
-            forcast: req.query.forcastData,
+            location, //error here. was Location: req.query.longitude, 
+            forecast: forecastData, // Error had req.query.forcastData
             address: req.query.address
+            })
+        })
     })
 })
 
