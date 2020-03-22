@@ -48,33 +48,29 @@ app.get('/weather', (req, res) => {
     if (!req.query.address){
         return res.send({
             error: 'You must provide an address'
-        })
-       
+        })    
     }
-    else {
-            geocode(address, (error, {latitude, longitude, location}) => {
+            geocode(req.query.address, (error, {latitude, longitude, location}) => {
                 if (error) {
-                    return res.send({
-                        error: 'Error in formatting missing information'
-                    })
+                    return res.send({ error }) // just got rid of the '' and text
          }
-            forcast(latitude, longitude, (error, forcastData) => {
-                    if (error) {
+            forcast(req.query.latitude, req.querylongitude, (error, forcastData) => {
+                    if (!req.forcast) {
                         return res.send({ 
-                            error :'You must provide a city'
+                            error :'You are missing infromation'
                         })
                     } 
                 })
             })
-     }
+     
              
    
 
     console.log(req.query.address)
     res.send({
-            Location: req.query.longitude.latitude,
+            Location: req.query.longitude, //error here.
             forcast: req.query.forcastData,
-            Address: req.query.address
+            address: req.query.address
     })
 })
 
