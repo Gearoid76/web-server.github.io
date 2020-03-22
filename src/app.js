@@ -2,12 +2,17 @@ const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
 
+const geocode = require('./utils/geocode')
+const forcast = require('./utils/forecast')
+
+
 const app = express()
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
+
 
 // Setup handlebars engine and views location
 app.set('view engine', 'hbs')
@@ -44,11 +49,31 @@ app.get('/weather', (req, res) => {
         return res.send({
             error: 'You must provide an address'
         })
+       
     }
+    else {
+            geocode(address, (error, {latitude, longitude, location}) => {
+                if (error) {
+                    return res.send({
+                        error: 'Error in formatting missing information'
+                    })
+         }
+            forcast(latitude, longitude, (error, forcastData) => {
+                    if (error) {
+                        return res.send({ 
+                            error :'You must provide a city'
+                        })
+                    } 
+                })
+            })
+     }
+             
+   
+
     console.log(req.query.address)
     res.send({
-            Location: 'Cork',
-            forcast:'Cloudy',
+            Location: req.query.longitude.latitude,
+            forcast: req.query.forcastData,
             Address: req.query.address
     })
 })
