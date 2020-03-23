@@ -30,3 +30,8 @@ fetch('https://api.mapbox.com/geocoding/v5/mapbox.places/'+ encodeURIComponent(a
 module.exports = geocode
 })
 })
+const weatherform = document.querySelector('form')
+
+weatherform.addEventListener('submit',() =>){
+    console.log('Testing')
+}
