@@ -27,11 +27,16 @@ fetch('https://api.mapbox.com/geocoding/v5/mapbox.places/'+ encodeURIComponent(a
 
     })
 }
-module.exports = geocode
+module.exports = geocode,
 })
 })
 const weatherform = document.querySelector('form')
+const search = document.querySelector('input')
 
-weatherform.addEventListener('submit',() =>){
-    console.log('Testing')
-}
+weatherform.addEventListener('submit',(e) =>{
+    e.preventDefault()
+
+    const location = search.value
+
+    console.log(location)
+})
