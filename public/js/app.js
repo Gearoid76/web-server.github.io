@@ -2,15 +2,18 @@ import { response } from "express"
 
 console.log('Client side Javascript is loaded')
 
-fetch('http://puzzle.mead.io/puzzle').then((responce) => {
-    response.json().then(() =>{
-        console.log(data)
+fetch('http://localhost:3000/address=%20helsinki').then((response) => {
+    response.json().then((data) =>{
+            if(data.error) {
+                console.log(data.error)
 
+            }else {
+                console.log(data.location)
+                console.log(data.forecast)
+            }
     })
 })
-fetch('https://api.mapbox.com/geocoding/v5/mapbox.places/'+ encodeURIComponent(address) +'.json?access_token=pk.eyJ1IjoidGltb20iLCJhIjoiY2s1NGNkanFjMDRlNTNza2JjbTVibWcxaSJ9.SJUSK7Y6kwUGVe2GCo_H6w&limit=1').then((responce) => {
-    response.json().then(() =>{
-        console.log(data)  
+
 
     request({ url, json: true }, (error, {body}) => {
         if (error) {
@@ -26,17 +29,13 @@ fetch('https://api.mapbox.com/geocoding/v5/mapbox.places/'+ encodeURIComponent(a
         }
 
     })
-}
-module.exports = geocode,
-})
-})
-const weatherform = document.querySelector('form')
-const search = document.querySelector('input')
 
-weatherform.addEventListener('submit',(e) =>{
-    e.preventDefault()
+   const weatherform = document.querySelector('form')
+   const search = document.querySelector('input')
 
-    const location = search.value
-
-    console.log(location)
-})
+   weatherform.addEventListener('submit',(event) => {
+       event.preventDefault()
+      
+       const location = search.value
+       console.log(location)
+   })
