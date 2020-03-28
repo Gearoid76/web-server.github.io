@@ -1,7 +1,6 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
-
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
@@ -31,14 +30,14 @@ app.get('', (req, res) => {
 
 app.get('/about', (req, res) => {
     res.render('about', {
-        title: 'About Me',
+        title: 'About',
         name: 'Gearoid Mk OCeallachain'
     })
 })
 
 app.get('/help', (req, res) => {
     res.render('help', {
-        helpText: 'This is some helpful text.',
+        helpText: 'This is some Text about help and whatnot',
         title: 'Help',
         name: 'Gearoid MK OCeallachain'
     })

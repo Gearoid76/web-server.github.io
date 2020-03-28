@@ -2,7 +2,7 @@ import { response } from "express"
 
 console.log('Client side Javascript is loaded')
 
-fetch('http://localhost:3000/address=%20helsinki').then((response) => {
+fetch('http://localhost:3000/address=').then((response) => {
     response.json().then((data) =>{
             if(data.error) {
                 console.log(data.error)
@@ -14,28 +14,29 @@ fetch('http://localhost:3000/address=%20helsinki').then((response) => {
     })
 })
 
+const weatherform = document.querySelector('form')
+const search = document.querySelector('input')
+const messageOne = document.querySelector('#message-1')
+const messageTwo = document.querySelector('#message-2')
 
-    request({ url, json: true }, (error, {body}) => {
-        if (error) {
-            callback('Unable to connect to location services!', undefined)
-        } else if (body.features.length === 0) {
-            callback('Unable to find location.Try another search.', undefined)
-        } else {
-            callback(undefined, {
-                latitude: body.features[0].center[0],
-                longitude: body.features[0].center[1],
-                location: body.features[0].place_name
-            })
-        }
+messageOne.textContent = 'From JavaSript'
 
-    })
-
-   const weatherform = document.querySelector('form')
-   const search = document.querySelector('input')
-
-   weatherform.addEventListener('submit',(event) => {
-       event.preventDefault()
+   weatherform.addEventListener('submit',(e) => {
+       e.preventDefault()
       
        const location = search.value
+
+       fetch('http://localhost:3000/address=' + location).then((response) => {
+    response.json().then((data) =>{
+            if(data.error) {
+                console.log(data.error)
+
+            }else {
+                console.log(data.location)
+                console.log(data.forecast)
+            }
+    })
+})
+
        console.log(location)
    })
