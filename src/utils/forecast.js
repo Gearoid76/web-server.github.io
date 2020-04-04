@@ -10,9 +10,10 @@ const forecast = (latitude,longitude,callback) => {
             callback('Unable to find location. Try another search', undefined)
     } else {
         //console.log (body.daily.data[0])    
-        //callback (undefined, body.daily.data[0].summary + ' It is currently ' + body.currently.temperature + '°C ' + body.daily.data[0].temperatureHigh +' a high of ')
-        callback(undefined, body.daily.data[0].summary + ' It is currently ' + body.currently.temperature + ' degress out. There is a ' + body.currently.precipProbability + '% chance of rain.')
-            //  + 'And a low of '+ body.daily.data[0].tempitureLow + 'There is a'+ body.currently.precipProbability + '% chance of rain.'+ body.daly.data[0].sunriseTime +'rises at '+ body.daly.data[0].sunsetTime + 'Sunset'+ body.daly.data[0].moonPhaze + 'Moonphaze'
+        callback (undefined, body.daily.data[0].summary + ' It is currently ' + body.currently.temperature + '°C ' +'With a tempiture high of ' + body.daily.data[0].temperatureHigh
+        + '°C '+ 'With a tempiture low of ' + body.daily.data[0].temperatureLow + '°C ')
+        //callback(undefined, body.daily.data[0].summary + ' It is currently ' + body.currently.temperature + ' degress out. There is a ' + body.currently.precipProbability + '% chance of rain.')
+         //' There is a'+ body.currently.precipProbability + '% chance of rain.'+ body.daly.data[0].sunriseTime +'rises at '+ body.daly.data[0].sunsetTime + 'Sunset'+ body.daly.data[0].moonPhaze + 'Moonphaze')
         }
 
     })
