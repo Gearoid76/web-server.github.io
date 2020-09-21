@@ -16,7 +16,7 @@ const publicDirectoryPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
 
-
+console.log(path.join(__dirname, '../public/help.html'))
 
 
 // Setup handlebars engine and views location
@@ -26,22 +26,9 @@ hbs.registerPartials(partialsPath)
 
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath))
+app.use(express.static(path.join(__dirname, '../public/about.html'))) /*
+app.use(express.static(path.join(__dirname, '../public/help.html')) */
 
-
-app.get('/about', (req, res) => {
-    res.render('about', {
-        title: 'About',
-        name: 'Gearoid Mk OCeallachain'
-    })
-})
-
-app.get('/help', (req, res) => {
-    res.render('help', {
-        helpText: 'This is some Text about help and whatnot',
-        title: 'Help',
-        name: 'Gearoid MK OCeallachain'
-    })
-})
 
 app.get('/weather', (req, res) => {
     if (!req.query.address){
