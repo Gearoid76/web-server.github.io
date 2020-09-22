@@ -29,6 +29,12 @@ app.use(express.static(publicDirectoryPath))
 app.use(express.static(path.join(__dirname, '../public/about.html'))) /*
 app.use(express.static(path.join(__dirname, '../public/help.html')) */
 
+app.get('', (req, res) => {
+    res.render('index', {
+        title: 'Weather',
+        name: 'Gearoid O Ceallachain'
+    })
+}) 
 
 app.get('/weather', (req, res) => {
     if (!req.query.address){
