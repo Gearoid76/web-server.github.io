@@ -69,6 +69,14 @@ app.get('/about', (req, res) => {
     })
 })
 
+app.get('/help', (req,res ) => {
+    res.render('help', {
+        title: 'HELP',
+        helpText: 'Gearoid Im here to help'
+
+    }  )
+})
+
 app.get('/products',(req,res) => {
     if (!req.query.search){
         return res.send({
