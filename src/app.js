@@ -72,7 +72,8 @@ app.get('/about', (req, res) => {
 app.get('/help', (req,res ) => {
     res.render('help', {
         title: 'HELP',
-        helpText: 'Gearoid Im here to help'
+        helpText: 'Gearoid Im here to help',
+        name: 'Gearoid O Ceallachain'
 
     }  )
 })
