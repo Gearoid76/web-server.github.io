@@ -62,6 +62,12 @@ app.get('/weather', (req, res) => {
         })
     })
 })
+app.get('/about', (req, res) => {
+    res.render('about', {
+        title: 'About me',
+        name: 'Gearoid O Ceallachain yeah'
+    })
+})
 
 app.get('/products',(req,res) => {
     if (!req.query.search){
