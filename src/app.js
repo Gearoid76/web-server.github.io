@@ -79,6 +79,7 @@ app.get('/help', (req,res ) => {
 })
 
 app.get('/products',(req,res) => {
+   // console.log(req.query.search) to see it work
     if (!req.query.search){
         return res.send({
             error:'You must provide a search term'
